@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+
+    <script type="text/babel">
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container);
+
+      
+      function LikeButton(props) {
+        const [likes, setLikes] = React.useState(0);
+
+        return (
+          <button 
+            onClick={() => setLikes(likes + 1)} 
+            style={{ padding: '10px 15px', margin: '5px', fontSize: '16px', cursor: 'pointer' }}
+          >
+            {props.name} ❤️ {likes}
+          </button>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <h2>Interactive Props & State</h2>
+            <p>Every button has their own count:</p>
+            
+            <LikeButton name="Post 1" />
+            <br />
+            <LikeButton name="Post 2" />
+            <br />
+            <LikeButton name="Post 3" />
+          </div>
+        );
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>
